@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "iceloca.sso.v1.ssov1";
+
+service Auth{
+    rpc Register (RegisterRequest) returns (RegisterResponse);
+    rpc Login (LoginRequest) returns (LoginResponse);
+    rpc IsAdmin (IsAdminRequest) returns (IsAdminResponse);
+}
+
+message RegisterRequest{
+    string email = 1; //Email of the user to register
+    string password = 2; //Password of the user to register
+}
+
+message RegisterResponse{
+    int64 user_id = 1; //User id of registered user
+}
+message LoginRequest{
+  string email = 1; //Email of the user to login
+  string password = 2; //Password of the user to login
+  int32 app_id = 3; // Id of the app to login
+}
+
+message LoginResponse{
+  string token = 1; //JWT token of the logged user
+}
+message IsAdminRequest{
+  int64 user_id = 3; // Id to check
+}
+
+message IsAdminResponse{
+  bool is_admin = 1; //Is user an admin
+}
