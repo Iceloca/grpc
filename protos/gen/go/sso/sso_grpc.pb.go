@@ -4,7 +4,7 @@
 // - protoc             v3.21.12
 // source: sso/sso.proto
 
-package iceloca_sso_v1_ssov1
+package ssov1
 
 import (
 	context "context"
